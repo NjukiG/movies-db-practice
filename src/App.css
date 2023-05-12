@@ -1,4 +1,4 @@
-body {
+* {
   background-color: rgb(57, 57, 59);
   color: whitesmoke;
 }
@@ -6,5 +6,4 @@ body {
 .movie-container > .row {
   overflow-x: auto;
   flex-wrap: nowrap;
-  
 }
