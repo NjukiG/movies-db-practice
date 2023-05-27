@@ -1,13 +1,18 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 
-function MovieList({ movies }) {
+// handleRemoveFavourite = { removeFavouriteMovie };
+function MovieList({ movies, AddFavourite, handleFavouritesAddition }) {
   return (
     <>
       {movies.map((movie, index) => {
         return (
-          <div>
-            <MovieCard movie={movie} />
+          <div key={index}>
+            <MovieCard
+              movie={movie}
+              AddFavourite={AddFavourite}
+              handleFavouritesAddition={handleFavouritesAddition}
+            />
           </div>
         );
       })}

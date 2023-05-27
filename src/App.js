@@ -5,13 +5,18 @@ import "bootswatch/dist/sketchy/bootstrap.min.css"; // Added this :boom:
 import MovieList from "./components/MovieList";
 import MovieListHeading from "./components/MovieListHeading";
 import SearchBox from "./components/SearchBox";
+import AddFavourite from "./components/AddFavourite";
+import RemoveFavourite from "./components/RemoveFavourite";
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchName, setSearchName] = useState("");
+  const [myFavourites, setMyFavourites] = useState([]);
 
   const getMovies = (searchName) => {
-    const URL = `http://www.omdbapi.com/?s=${!searchName ? "Steel" : searchName}&apikey=cc8b48eb`;
+    const URL = `http://www.omdbapi.com/?s=${
+      !searchName ? "Steel" : searchName
+    }&apikey=cc8b48eb`;
 
     fetch(URL)
       .then((res) => res.json())
@@ -19,20 +24,65 @@ function App() {
         if (data.Search) {
           setMovies(data.Search);
         }
+      })
+      .catch((error) => {
+        console.log("Error fetching data", error);
       });
+  };
+
+  const saveLocally = (items) => {
+    localStorage.setItem("my-movies", JSON.stringify(items));
   };
 
   useEffect(() => {
     getMovies(searchName);
   }, [searchName]);
+
+  useEffect(() => {
+    const savedFavourites = JSON.parse(
+      localStorage.getItem("favourite-recipes")
+    );
+    setMyFavourites(savedFavourites);
+  }, []);
+
+  const addFavouriteMovie = (movie) => {
+    const newFavourites = [...myFavourites, movie];
+    setMyFavourites(newFavourites);
+    saveLocally(newFavourites);
+  };
+
+  const removeFavouriteMovie = (movie) => {
+    const newFavourites = myFavourites.filter((favourite) => {
+      return favourite.imdbID !== movie.imdbID;
+    });
+    setMyFavourites(newFavourites);
+    saveLocally(newFavourites);
+  };
+
   return (
     <div className="container-fluid movie-container">
-      <div className="row d-flex align-items-center mt-4 mb-4">
+      <div className="row d-flex align-items-center justify-content-between mt-4 mb-4">
         <MovieListHeading heading="My Movies" />
         <SearchBox searchName={searchName} setSearchName={setSearchName} />
       </div>
       <div className="row">
-        <MovieList movies={movies} />
+        <MovieList
+          movies={movies}
+          AddFavourite={AddFavourite}
+          handleFavouritesAddition={addFavouriteMovie}
+        />
+      </div>
+
+      <div className="row d-flex align-items-center justify-content-between mt-4 mb-4">
+        <MovieListHeading heading="My Favourites" />
+      </div>
+
+      <div className="row">
+        <MovieList
+          movies={myFavourites}
+          AddFavourite={RemoveFavourite}
+          handleFavouritesAddition={removeFavouriteMovie}
+        />
       </div>
     </div>
   );
