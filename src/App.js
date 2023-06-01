@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import "bootswatch/dist/sketchy/bootstrap.min.css"; // Added this :boom:
+import "bootswatch/dist/superhero/bootstrap.min.css"; // Added this :boom:
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import MovieList from "./components/MovieList";
 import MovieListHeading from "./components/MovieListHeading";
