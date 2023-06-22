@@ -5,10 +5,10 @@
   /* align-items: center; */
 }
 
-.movie-container > .row {
+/* .movie-container > .row {
   overflow-x: auto;
   flex-wrap: nowrap;
-}
+} */
 
 .image-container {
   position: relative;

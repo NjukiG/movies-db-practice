@@ -1,22 +1,9 @@
-import React from "react";
-import MovieList from "./MovieList";
-import MovieListHeading from "./MovieListHeading";
+import React from 'react'
 
-const Favorites = ({myFavourites, RemoveFavourite, removeFavouriteMovie}) => {
+const Favorites = () => {
   return (
-    <div>
-      <div className="row d-flex align-items-center justify-content-between mt-4 mb-4">
-        <MovieListHeading heading="My Favourites" />
-      </div>
-      <div className="row">
-        <MovieList
-          movies={myFavourites}
-          AddFavourite={RemoveFavourite}
-          handleFavouritesAddition={removeFavouriteMovie}
-        />
-      </div>
-    </div>
-  );
-};
+    <div>Favorites</div>
+  )
+}
 
-export default Favorites;
+export default Favorites
