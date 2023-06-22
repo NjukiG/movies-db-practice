@@ -13,15 +13,15 @@ function App() {
   const [myFavourites, setMyFavourites] = useState([]);
 
   const getMovies = (searchName) => {
-    const URL = `http://www.omdbapi.com/?s=${
-      !searchName ? "Steel" : searchName
-    }&apikey=cc8b48eb`;
+    const URL = `http://www.omdbapi.com/?&apikey=cc8b48eb&s=${
+      !searchName ? "iron man" : searchName
+    }`;
 
     fetch(URL)
       .then((res) => res.json())
       .then((data) => {
         if (data.Search) {
-          console.log(data.Search)
+          console.log(data.Search);
           setMovies(data.Search);
         }
       })
@@ -38,7 +38,17 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route
+          exact
+          path="/"
+          element={
+            <Home
+              setSearchName={setSearchName}
+              movies={movies}
+              searchName={searchName}
+            />
+          }
+        />
         <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </>
