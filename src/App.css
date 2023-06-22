@@ -68,12 +68,12 @@
   transition: var(--transition);
 }
 .movie-info h4 {
-  color: var(--clr-white);
+  color: aqua;
   margin-bottom: 0.25rem;
 }
 .movie-info p {
   margin-bottom: 0;
-  color: var(--clr-white);
+  color: antiquewhite;
 }
 .movie:hover .movie-info {
   transform: translateY(0);
