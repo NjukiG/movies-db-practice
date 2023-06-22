@@ -4,7 +4,7 @@ function MovieCard({ movie, AddFavourite, handleFavouritesAddition }) {
   const FavouriteComponent = AddFavourite;
   return (
     <div className="image-container d-block justify-content-start m-3">
-      <img src={movie.Poster} alt={movie.Title} />
+      {/* <img src={movie.Poster} alt={movie.Title} />
 
       <br />
       <br />
@@ -18,7 +18,7 @@ function MovieCard({ movie, AddFavourite, handleFavouritesAddition }) {
         className="overlay d-flex align-items-center justify-content-center"
       >
         <FavouriteComponent />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -5,7 +5,7 @@ import MovieCard from "./MovieCard";
 function MovieList({ movies, AddFavourite, handleFavouritesAddition }) {
   return (
     <>
-      {movies.map((movie, index) => {
+      {/* {movies && movies.map((movie, index) => {
         return (
           <div key={index}>
             <MovieCard
@@ -15,7 +15,7 @@ function MovieList({ movies, AddFavourite, handleFavouritesAddition }) {
             />
           </div>
         );
-      })}
+      })} */}
     </>
   );
 }
