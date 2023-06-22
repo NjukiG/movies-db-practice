@@ -1,6 +1,8 @@
 * {
   background-color: rgb(57, 57, 59);
   color: whitesmoke;
+  justify-content: center;
+  /* align-items: center; */
 }
 
 .movie-container > .row {
