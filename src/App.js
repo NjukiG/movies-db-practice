@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import "bootswatch/dist/superhero/bootstrap.min.css"; // Added this :boom:
+import "bootswatch/dist/lux/bootstrap.min.css"; // Added this :boom:
 
 import NavBar from "./components/NavBar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Favorites from "./components/Favorites";
+import SingleItem from "./components/SingleItem";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -49,6 +50,7 @@ function App() {
             />
           }
         />
+        <Route path="/movies/:id" element={<SingleItem />} />
         <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </>

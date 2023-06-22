@@ -26,7 +26,10 @@ const Home = ({ movies, searchName, setSearchName }) => {
                 <div className="movie-info">
                   <h4 className="title">{title}</h4>
                   <p>{year}</p>
-                  <p>{type.charAt(0).toUpperCase()}{type.slice(1)}</p>
+                  <p>
+                    {type.charAt(0).toUpperCase()}
+                    {type.slice(1)}
+                  </p>
                 </div>
               </Link>
             );
