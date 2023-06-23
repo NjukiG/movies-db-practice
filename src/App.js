@@ -12,7 +12,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [myFavourites, setMyFavourites] = useState([]);
-  const [watchLater, setWatchLater] = useState([])
+  const [watchLater, setWatchLater] = useState([]);
 
   // console.log(myFavourites);
 
@@ -63,18 +63,18 @@ function App() {
     saveLocally(newFavourites);
   };
 
-  const addWatchLater = (movie)=> {
+  const addWatchLater = (movie) => {
     const toWatch = [...watchLater, movie];
     setWatchLater(toWatch);
     saveLocally(toWatch);
-  }
+  };
 
   const removeWatchLater = (movie) => {
-    const alreadyWatched = watchLater.filter((item) => {
+    const toWatch = watchLater.filter((item) => {
       return item.id !== movie.id;
     });
-    setWatchLater(alreadyWatched);
-    saveLocally(alreadyWatched);
+    setWatchLater(toWatch);
+    saveLocally(toWatch);
   };
 
   return (
@@ -107,7 +107,16 @@ function App() {
           element={<Favorites myFavourites={myFavourites} />}
         />
 
-        <Route path="/later" element={<WatchLater watchLater={watchLater} handleWatchLater={addWatchLater} handleRemoveWatch={removeWatchLater} />} />
+        <Route
+          path="/later"
+          element={
+            <WatchLater
+              watchLater={watchLater}
+              handleWatchLater={addWatchLater}
+              handleRemoveWatch={removeWatchLater}
+            />
+          }
+        />
       </Routes>
     </>
   );
