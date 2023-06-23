@@ -6,7 +6,7 @@ const SingleItem = ({
   myFavourites,
   handleremoveFavourites,
 }) => {
-  console.log(myFavourites);
+  // console.log(myFavourites);
 
   const [movie, setMovie] = useState([]);
   const { id } = useParams();
@@ -39,9 +39,7 @@ const SingleItem = ({
     Year: year,
     Actors: actors,
     Awards: awards,
-    Country: country,
     Director: director,
-    Released: released,
   } = movie;
   return (
     <section className="single-movie">

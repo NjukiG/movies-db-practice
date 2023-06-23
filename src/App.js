@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "bootswatch/dist/superhero/bootstrap.min.css"; // Added this :boom:
-
 import NavBar from "./components/NavBar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
@@ -13,6 +12,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [myFavourites, setMyFavourites] = useState([]);
+  const [watchLater, setWatchLater] = useState([])
 
   // console.log(myFavourites);
 
@@ -63,6 +63,20 @@ function App() {
     saveLocally(newFavourites);
   };
 
+  const addWatchLater = (movie)=> {
+    const toWatch = [...watchLater, movie];
+    setWatchLater(toWatch);
+    saveLocally(toWatch);
+  }
+
+  const removeWatchLater = (movie) => {
+    const alreadyWatched = watchLater.filter((item) => {
+      return item.id !== movie.id;
+    });
+    setWatchLater(alreadyWatched);
+    saveLocally(alreadyWatched);
+  };
+
   return (
     <>
       <NavBar />
@@ -93,7 +107,7 @@ function App() {
           element={<Favorites myFavourites={myFavourites} />}
         />
 
-        <Route path="/later" element={<WatchLater />} />
+        <Route path="/later" element={<WatchLater watchLater={watchLater} handleWatchLater={addWatchLater} handleRemoveWatch={removeWatchLater} />} />
       </Routes>
     </>
   );

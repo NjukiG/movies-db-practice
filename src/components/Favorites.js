@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Favorites = ({
-  myFavourites,
- 
-}) => {
-  console.log(myFavourites);
+const Favorites = ({ myFavourites }) => {
+  // console.log(myFavourites);
   return (
     <div className="container-fluid">
       <section className="movies">
