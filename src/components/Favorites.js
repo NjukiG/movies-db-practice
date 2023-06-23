@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Favorites = ({ myFavourites }) => {
+const Favorites = ({
+  myFavourites,
+  handleAddToFavorites,
+  handleremoveFavourites,
+}) => {
   console.log(myFavourites);
   return (
     <div className="container-fluid">

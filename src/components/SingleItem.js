@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const SingleItem = ({ handleAddToFavorites, myFavourites }) => {
+const SingleItem = ({
+  handleAddToFavorites,
+  myFavourites,
+  handleremoveFavourites,
+}) => {
   console.log(myFavourites);
 
   const [movie, setMovie] = useState([]);
@@ -28,6 +32,7 @@ const SingleItem = ({ handleAddToFavorites, myFavourites }) => {
   }, []);
 
   const {
+    imdbID: ID,
     Poster: poster,
     Title: title,
     Plot: plot,
@@ -52,12 +57,22 @@ const SingleItem = ({ handleAddToFavorites, myFavourites }) => {
           Back to movies
         </Link>
         <Link className="btn btn-outline-success m-2">Watch Later?</Link>
-        <button
-          onClick={() => handleAddToFavorites(movie)}
-          className="btn btn-outline-secondary m-2"
-        >
-          Add to Favorites?
-        </button>
+
+        {myFavourites.includes(movie) ? (
+          <button
+            onClick={() => handleremoveFavourites(movie)}
+            className="btn btn-outline-secondary m-2"
+          >
+            Remove
+          </button>
+        ) : (
+          <button
+            onClick={() => handleAddToFavorites(movie)}
+            className="btn btn-outline-secondary m-2"
+          >
+            Add
+          </button>
+        )}
       </div>
     </section>
   );

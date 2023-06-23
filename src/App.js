@@ -13,7 +13,7 @@ function App() {
   const [searchName, setSearchName] = useState("");
   const [myFavourites, setMyFavourites] = useState([]);
 
-  console.log(myFavourites);
+  // console.log(myFavourites);
 
   const getMovies = (searchName) => {
     const URL = `http://www.omdbapi.com/?&apikey=cc8b48eb&s=${
@@ -24,7 +24,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         if (data.Search) {
-          console.log(data.Search);
+          // console.log(data.Search);
           setMovies(data.Search);
         }
       })
@@ -37,10 +37,29 @@ function App() {
     getMovies(searchName);
   }, [searchName]);
 
+  const saveLocally = (items) => {
+    localStorage.setItem("my-movies", JSON.stringify(items));
+  };
+
+  useEffect(() => {
+    const savedFavourites = JSON.parse(localStorage.getItem("my-movies"));
+    if (savedFavourites) {
+      setMyFavourites(savedFavourites);
+    }
+  }, []);
+
   const addFavouriteMovie = (movie) => {
     const newFavourites = [...myFavourites, movie];
     setMyFavourites(newFavourites);
-    // saveLocally(newFavourites);
+    saveLocally(newFavourites);
+  };
+
+  const removeFavouriteMovie = (movie) => {
+    const newFavourites = myFavourites.filter((favourite) => {
+      return favourite.imdbID !== movie.imdbID;
+    });
+    setMyFavourites(newFavourites);
+    saveLocally(newFavourites);
   };
 
   return (
@@ -63,11 +82,21 @@ function App() {
           element={
             <SingleItem
               handleAddToFavorites={addFavouriteMovie}
+              handleremoveFavourites={removeFavouriteMovie} // Add this line
               myFavourites={myFavourites}
             />
           }
         />
-        <Route path="/favorites" element={<Favorites myFavourites={myFavourites} />} />
+        <Route
+          path="/favorites"
+          element={
+            <Favorites
+              myFavourites={myFavourites}
+              handleAddToFavorites={addFavouriteMovie}
+              handleremoveFavourites={removeFavouriteMovie} // Add this line
+            />
+          }
+        />
       </Routes>
     </>
   );
@@ -75,21 +104,12 @@ function App() {
 
 export default App;
 
-// const saveLocally = (items) => {
-//   localStorage.setItem("my-movies", JSON.stringify(items));
-// };
-
-// useEffect(() => {
-//   const savedFavourites = JSON.parse(
-//     localStorage.getItem("favourite-recipes")
-//   );
-//   setMyFavourites(savedFavourites);
-// }, []);
-
-// const removeFavouriteMovie = (movie) => {
-//   const newFavourites = myFavourites.filter((favourite) => {
-//     return favourite.imdbID !== movie.imdbID;
-//   });
-//   setMyFavourites(newFavourites);
-//   saveLocally(newFavourites);
+// const addFavouriteMovie = (movie) => {
+//   if (myFavourites && myFavourites.includes(movie)) {
+//     setMyFavourites(myFavourites.filter((favMovie) => favMovie !== movie));
+//     saveLocally(myFavourites);
+//   } else {
+//     setMyFavourites([...myFavourites, movie]);
+//     saveLocally(myFavourites);
+//   }
 // };

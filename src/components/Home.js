@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
 
 const Home = ({ movies, searchName, setSearchName }) => {
-  console.log(movies, searchName);
+  // console.log(movies, searchName);
   return (
     <div className="container-fluid">
       <SearchBox searchName={searchName} setSearchName={setSearchName} />
