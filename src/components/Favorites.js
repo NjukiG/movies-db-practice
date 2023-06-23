@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 const Favorites = ({
   myFavourites,
-  handleAddToFavorites,
-  handleremoveFavourites,
+ 
 }) => {
   console.log(myFavourites);
   return (

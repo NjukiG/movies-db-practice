@@ -56,21 +56,21 @@ const SingleItem = ({
         <Link to="/" className="btn btn-outline-warning m-2">
           Back to movies
         </Link>
-        <Link className="btn btn-outline-success m-2">Watch Later?</Link>
+        <button className="btn btn-outline-success m-2">Watch Later?</button>
 
         {myFavourites.includes(movie) ? (
           <button
             onClick={() => handleremoveFavourites(movie)}
             className="btn btn-outline-secondary m-2"
           >
-            Remove
+            Remove from Favourites?
           </button>
         ) : (
           <button
             onClick={() => handleAddToFavorites(movie)}
             className="btn btn-outline-secondary m-2"
           >
-            Add
+            Add to Favourites?
           </button>
         )}
       </div>

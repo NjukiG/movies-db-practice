@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Favorites from "./components/Favorites";
 import SingleItem from "./components/SingleItem";
+import WatchLater from "./components/WatchLater";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -89,14 +90,10 @@ function App() {
         />
         <Route
           path="/favorites"
-          element={
-            <Favorites
-              myFavourites={myFavourites}
-              handleAddToFavorites={addFavouriteMovie}
-              handleremoveFavourites={removeFavouriteMovie} // Add this line
-            />
-          }
+          element={<Favorites myFavourites={myFavourites} />}
         />
+
+        <Route path="/later" element={<WatchLater />} />
       </Routes>
     </>
   );
