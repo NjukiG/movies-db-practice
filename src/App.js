@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import "bootswatch/dist/lux/bootstrap.min.css"; // Added this :boom:
+import "bootswatch/dist/superhero/bootstrap.min.css"; // Added this :boom:
 
 import NavBar from "./components/NavBar";
 import { Route, Routes } from "react-router-dom";
@@ -12,6 +12,8 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [myFavourites, setMyFavourites] = useState([]);
+
+  console.log(myFavourites);
 
   const getMovies = (searchName) => {
     const URL = `http://www.omdbapi.com/?&apikey=cc8b48eb&s=${
@@ -35,6 +37,12 @@ function App() {
     getMovies(searchName);
   }, [searchName]);
 
+  const addFavouriteMovie = (movie) => {
+    const newFavourites = [...myFavourites, movie];
+    setMyFavourites(newFavourites);
+    // saveLocally(newFavourites);
+  };
+
   return (
     <>
       <NavBar />
@@ -50,8 +58,16 @@ function App() {
             />
           }
         />
-        <Route path="/movies/:id" element={<SingleItem />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/movies/:id"
+          element={
+            <SingleItem
+              handleAddToFavorites={addFavouriteMovie}
+              myFavourites={myFavourites}
+            />
+          }
+        />
+        <Route path="/favorites" element={<Favorites myFavourites={myFavourites} />} />
       </Routes>
     </>
   );
@@ -69,12 +85,6 @@ export default App;
 //   );
 //   setMyFavourites(savedFavourites);
 // }, []);
-
-// const addFavouriteMovie = (movie) => {
-//   const newFavourites = [...myFavourites, movie];
-//   setMyFavourites(newFavourites);
-//   saveLocally(newFavourites);
-// };
 
 // const removeFavouriteMovie = (movie) => {
 //   const newFavourites = myFavourites.filter((favourite) => {

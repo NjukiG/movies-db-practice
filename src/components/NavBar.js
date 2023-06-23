@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    
+      <nav
+        className="navbar sticky-top navbar-expand-lg bg-dark"
+        data-bs-theme="dark"
+      >
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand">Movies DB</Link>
+          <Link to="/" className="navbar-brand">
+            Movies DB
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -29,7 +34,7 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
-    </div>
+    
   );
 };
 
