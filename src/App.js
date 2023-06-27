@@ -17,7 +17,7 @@ function App() {
   // console.log(myFavourites);
 
   const getMovies = (searchName) => {
-    const URL = `http://www.omdbapi.com/?&apikey=cc8b48eb&s=${
+    const URL = `https://www.omdbapi.com/?&apikey=cc8b48eb&s=${
       !searchName ? "iron man" : searchName
     }`;
 
