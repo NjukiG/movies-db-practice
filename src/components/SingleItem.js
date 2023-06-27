@@ -16,7 +16,7 @@ const SingleItem = ({
   const { id } = useParams();
 
   const getMovie = () => {
-    const URL2 = `http://www.omdbapi.com/?&apikey=cc8b48eb&i=${id}`;
+    const URL2 = `https://www.omdbapi.com/?&apikey=cc8b48eb&i=${id}`;
 
     fetch(URL2)
       .then((res) => res.json())

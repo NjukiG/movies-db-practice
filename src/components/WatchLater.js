@@ -7,7 +7,8 @@ const WatchLater = ({ watchLater }) => {
     <div className="container-fluid">
       <h3 className="m-4">
         {!watchLater
-          ? "Add some movies to watch later!" : "These are my watch later list!"}
+          ? "Add some movies to watch later!"
+          : "These are my watch later list!"}
       </h3>
 
       <section className="movies">
