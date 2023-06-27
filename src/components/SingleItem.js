@@ -9,7 +9,7 @@ const SingleItem = ({
   handleWatchLater,
   handleRemoveWatch,
 }) => {
-  // console.log("THis is favorites", myFavourites);
+  console.log("THis is favorites", myFavourites);
   // console.log("This is watch later", watchLater);
 
   const [movie, setMovie] = useState([]);
@@ -58,9 +58,7 @@ const SingleItem = ({
         <Link to="/" className="btn btn-outline-warning m-2">
           Back to movies
         </Link>
-
         {/* Watch later button */}
-
         {watchLater.includes(movie) ? (
           <button
             onClick={() => handleRemoveWatch(movie)}
@@ -76,23 +74,19 @@ const SingleItem = ({
             Add to Watch Later?
           </button>
         )}
-
         {/* Add Favorites button */}
-        {myFavourites.includes(movie) ? (
-          <button
-            onClick={() => handleremoveFavourites(movie)}
-            className="btn btn-outline-secondary m-2"
-          >
-            Remove from Favourites?
-          </button>
-        ) : (
-          <button
-            onClick={() => handleAddToFavorites(movie)}
-            className="btn btn-outline-secondary m-2"
-          >
-            Add to Favourites?
-          </button>
-        )}
+        <button
+          onClick={() => {
+            myFavourites.includes(movie)
+              ? handleremoveFavourites(movie)
+              : handleAddToFavorites(movie);
+          }}
+          className="btn btn-outline-secondary m-2"
+        >
+          {myFavourites.includes(movie)
+            ? "Remove from Favourites"
+            : "Add Favourite"}
+        </button>
       </div>
     </section>
   );
