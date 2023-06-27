@@ -5,6 +5,7 @@ const Favorites = ({ myFavourites }) => {
   // console.log(myFavourites);
   return (
     <div className="container-fluid">
+      <h3 className="m-4">These are my Favorites!</h3>
       <section className="movies">
         {myFavourites &&
           myFavourites.map((movie) => {

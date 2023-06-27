@@ -5,8 +5,12 @@ const SingleItem = ({
   handleAddToFavorites,
   myFavourites,
   handleremoveFavourites,
+  watchLater,
+  handleWatchLater,
+  handleRemoveWatch,
 }) => {
-  // console.log(myFavourites);
+  // console.log("THis is favorites", myFavourites);
+  // console.log("This is watch later", watchLater);
 
   const [movie, setMovie] = useState([]);
   const { id } = useParams();
@@ -54,8 +58,26 @@ const SingleItem = ({
         <Link to="/" className="btn btn-outline-warning m-2">
           Back to movies
         </Link>
-        <button className="btn btn-outline-success m-2">Watch Later?</button>
 
+        {/* Watch later button */}
+
+        {watchLater.includes(movie) ? (
+          <button
+            onClick={() => handleRemoveWatch(movie)}
+            className="btn btn-outline-secondary m-2"
+          >
+            Remove from Watch Later?
+          </button>
+        ) : (
+          <button
+            onClick={() => handleWatchLater(movie)}
+            className="btn btn-outline-secondary m-2"
+          >
+            Add to Watch Later?
+          </button>
+        )}
+
+        {/* Add Favorites button */}
         {myFavourites.includes(movie) ? (
           <button
             onClick={() => handleremoveFavourites(movie)}

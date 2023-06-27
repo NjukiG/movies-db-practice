@@ -99,6 +99,9 @@ function App() {
               handleAddToFavorites={addFavouriteMovie}
               handleremoveFavourites={removeFavouriteMovie} // Add this line
               myFavourites={myFavourites}
+              watchLater={watchLater}
+              handleWatchLater={addWatchLater}
+              handleRemoveWatch={removeWatchLater}
             />
           }
         />
@@ -112,8 +115,8 @@ function App() {
           element={
             <WatchLater
               watchLater={watchLater}
-              handleWatchLater={addWatchLater}
-              handleRemoveWatch={removeWatchLater}
+              // handleWatchLater={addWatchLater}
+              // handleRemoveWatch={removeWatchLater}
             />
           }
         />
