@@ -41,6 +41,17 @@ function App() {
   const saveLocally = (items) => {
     localStorage.setItem("my-movies", JSON.stringify(items));
   };
+  const saveLocally2 = (items) => {
+    localStorage.setItem("watch-later", JSON.stringify(items));
+  };
+
+  useEffect(() => {
+    const watchLaterItems = JSON.parse(localStorage.getItem("watch-later"));
+
+    if (watchLaterItems) {
+      setWatchLater(watchLaterItems);
+    }
+  }, []);
 
   useEffect(() => {
     const savedFavourites = JSON.parse(localStorage.getItem("my-movies"));
@@ -66,7 +77,7 @@ function App() {
   const addWatchLater = (movie) => {
     const toWatch = [...watchLater, movie];
     setWatchLater(toWatch);
-    saveLocally(toWatch);
+    saveLocally2(toWatch);
   };
 
   const removeWatchLater = (movie) => {
@@ -74,7 +85,7 @@ function App() {
       return item.id !== movie.id;
     });
     setWatchLater(toWatch);
-    saveLocally(toWatch);
+    saveLocally2(toWatch);
   };
 
   return (
