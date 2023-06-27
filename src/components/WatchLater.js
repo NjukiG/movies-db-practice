@@ -5,7 +5,11 @@ const WatchLater = ({ watchLater }) => {
   //   console.log(watchLater, handleWatchLater, handleRemoveWatch);
   return (
     <div className="container-fluid">
-      <h3 className="m-4">These are my Watch later list!</h3>
+      <h3 className="m-4">
+        {watchLater
+          ? "These are my Watch later list!"
+          : "Add some movies to watch later!"}
+      </h3>
 
       <section className="movies">
         {watchLater.map((movie) => {
